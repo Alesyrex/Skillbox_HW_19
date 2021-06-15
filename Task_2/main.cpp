@@ -18,11 +18,10 @@ int main() {
     }
     int count = 0;
     while(!file.eof()){
-        file.read(buffer, sizeof(buffer));
+        file.read(buffer, sizeof(buffer) - 1);
         count = file.gcount();
-        for (int i=0;i < count;i++) {
-            std::cout << buffer[i];
-        }
+        buffer[count] = 0;
+        std::cout << buffer;
     }
     file.close();
     return 0;
