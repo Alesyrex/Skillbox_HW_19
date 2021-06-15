@@ -37,13 +37,12 @@ int main() {
         question.open(pathQuestion,std::ios::binary);
         int counter = 0;
         while(!question.eof()){
-            question.read(buffer, sizeof(buffer));
+            question.read(buffer, sizeof(buffer) - 1);
             counter = question.gcount();
-            for (int i=0;i < counter;i++) {
-                std::cout << buffer[i];
-            }
-            std::cout << std::endl;
+            buffer[counter] = 0;
+            std::cout << buffer;
         }
+        std::cout << std::endl;
         question.close();
 
         std::cout << "Your answer: ";
